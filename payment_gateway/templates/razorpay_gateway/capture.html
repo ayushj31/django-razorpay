@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}User: {{ object.username }}{% endblock %}
+
+{% block content %}
+    <div class="container">
+
+
+        <h1>
+            Razorpay ID:
+        </h1>
+        <h4>
+            {{ razorpay_payment_id }}
+        </h4>
+        <h1>
+            Response:
+        </h1>
+        <h4>
+            {{ payment }}
+        </h4>
+
+
+    </div>
+{% endblock content %}

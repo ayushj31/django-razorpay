@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}User: {{ object.username }}{% endblock %}
+
+{% block content %}
+    <div class="container">
+
+        <form action="/checkout/capture/" method="POST">
+            {% csrf_token %}
+            <!-- Note that the amount is in paise = 50 INR -->
+            <script
+                    src="{% static 'js/razorpay-checkout.js' %}"
+                    data-key="rzp_test_l8wk0e8kpnyvJm"
+                    data-amount="5000"
+                    data-name="TixDo"
+                    data-description="Your Movie Ticket"
+                    data-image="http://tixdo.com/wp-content/uploads/2016/03/tixdocom_242_101.png"
+                    data-prefill.name="{{ user.username }}"
+                    data-prefill.email="{{ user.email }}"
+                    data-theme.color="#F37254"
+                    ></script>
+            <input type="hidden" value="Hidden Element" name="hidden">
+        </form>
+
+    </div>
+{% endblock content %}
